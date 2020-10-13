@@ -32,5 +32,7 @@ ENV C9_HOSTNAME="localhost"
 
 USER root
 
-RUN mysql -e "CREATE USER 'test_user'@'%' IDENTIFIED BY 'example'";
+RUN mysql -e "CREATE USER 'test_user'@'%' IDENTIFIED BY 'example';";
+RUN mysql -e "CREATE DATABASE test_database;"
+RUN mysql -r "GRANT ALL ON test_database.* TO 'test_user'@'%';"
 # Switch back to root to allow IDE to load
