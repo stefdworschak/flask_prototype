@@ -21,8 +21,9 @@ COPY .theia/start_mysql.sh /etc/mysql/mysql-bashrc-launch.sh
 USER gitpod
 
 # Start MySQL when we log in
-
 RUN echo ". /etc/mysql/mysql-bashrc-launch.sh" >> ~/.bashrc
+
+RUN mysql -e "CREATE USER 'test_user'@'%' IDENTIFIED BY 'example'";
 
 # Local environment variables
 # C9USER is temporary to allow the MySQL Gist to run
