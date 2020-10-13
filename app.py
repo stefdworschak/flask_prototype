@@ -6,13 +6,13 @@ from flask import Flask, render_template, jsonify
 app = Flask(__name__, static_url_path='/static')
 
 
-@app.route('/')
-def index(method=['GET']):
+@app.route('/', methods=['GET'])
+def index():
     return render_template('index.html')
 
 
-@app.route('/api')
-def api(method=['GET','POST']):
+@app.route('/api', methods=['GET','POST'])
+def api():
     """This is the function you can put your API logic into
 
     Returns a JSON object
