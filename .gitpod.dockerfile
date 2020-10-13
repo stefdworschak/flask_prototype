@@ -23,8 +23,6 @@ USER gitpod
 # Start MySQL when we log in
 RUN echo ". /etc/mysql/mysql-bashrc-launch.sh" >> ~/.bashrc
 
-RUN mysql -e "CREATE USER 'test_user'@'%' IDENTIFIED BY 'example'";
-
 # Local environment variables
 # C9USER is temporary to allow the MySQL Gist to run
 ENV C9_USER="gitpod"
@@ -33,4 +31,6 @@ ENV IP="0.0.0.0"
 ENV C9_HOSTNAME="localhost"
 
 USER root
+
+RUN mysql -e "CREATE USER 'test_user'@'%' IDENTIFIED BY 'example'";
 # Switch back to root to allow IDE to load
